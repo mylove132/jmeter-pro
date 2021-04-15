@@ -10,6 +10,6 @@ public class UserPasswordNotMatchException extends UserException
 
     public UserPasswordNotMatchException()
     {
-        super("user.password.not.match", null);
+        super(3001, null);
     }
 }

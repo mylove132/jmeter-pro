@@ -1,9 +1,5 @@
 package com.lzh.jmeter.system.mapper;
-
-
-
 import com.lzh.jmeter.system.domain.SysOperLog;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3307/nethp-test?user=root&password=&useUnicode=true&characterEncoding=gbk&autoReconnect=true&failOverReadOnly=false
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+
+
+server:
+  port: 8090

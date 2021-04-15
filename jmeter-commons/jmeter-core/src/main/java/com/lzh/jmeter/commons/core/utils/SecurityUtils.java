@@ -16,6 +16,8 @@ public class SecurityUtils
     public static String getUsername()
     {
         String username = ServletUtils.getRequest().getHeader(CacheConstants.DETAILS_USERNAME);
+        // todo 设置登陆用户名
+        username = username == null ? "张三" : username;
         return ServletUtils.urlDecode(username);
     }
 

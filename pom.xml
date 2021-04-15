@@ -24,6 +24,8 @@
         <fastjson.version>1.2.75</fastjson.version>
         <common-pool.version>2.6.2</common-pool.version>
         <mysql.connection.version>5.1.30</mysql.connection.version>
+        <druid.version>1.1.17</druid.version>
+        <okhttp.version>3.6.0</okhttp.version>
     </properties>
 
     <dependencyManagement>
@@ -66,6 +68,13 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp.version}</version>
+            </dependency>
+
             <!-- 公共资源池 -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
@@ -77,6 +86,13 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.connection.version}</version>
+            </dependency>
+
+            <!--durid-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
             </dependency>
 
             <!--项目核心依赖-->
@@ -118,6 +134,20 @@
             <dependency>
                 <groupId>com.lzh.jmeter</groupId>
                 <artifactId>jmeter-mq</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+
+            <!--定时任务服务-->
+            <dependency>
+                <groupId>com.lzh.jmeter</groupId>
+                <artifactId>jmeter-task</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+
+            <!--日志服务组件-->
+            <dependency>
+                <groupId>com.lzh.jmeter</groupId>
+                <artifactId>jmeter-log</artifactId>
                 <version>1.0.0</version>
             </dependency>
         </dependencies>

@@ -10,24 +10,4 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>jmeter-log</artifactId>
-
-    <dependencies>
-
-        <!--aop-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.lzh.jmeter</groupId>
-            <artifactId>jmeter-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.lzh.jmeter</groupId>
-            <artifactId>jmeter-system</artifactId>
-        </dependency>
-    </dependencies>
-
 </project>

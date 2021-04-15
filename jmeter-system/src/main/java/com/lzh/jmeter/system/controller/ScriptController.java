@@ -5,6 +5,8 @@ import com.lzh.jmeter.commons.core.domain.R;
 import com.lzh.jmeter.commons.core.utils.Md5Utils;
 import com.lzh.jmeter.commons.core.web.controller.BaseController;
 import com.lzh.jmeter.commons.core.web.page.TableDataInfo;
+import com.lzh.jmeter.commons.log.annotation.Log;
+import com.lzh.jmeter.commons.log.enums.BusinessType;
 import com.lzh.jmeter.system.domain.JmeterScript;
 import com.lzh.jmeter.system.service.IJmeterScriptService;
 import org.slf4j.Logger;
@@ -41,6 +43,7 @@ public class ScriptController extends BaseController {
         return R.ok(true);
     }
 
+    @Log(title = "获取脚本列表")
     @GetMapping("/script/list")
     public TableDataInfo queryScriptByIdController() {
         startPage();
@@ -48,6 +51,7 @@ public class ScriptController extends BaseController {
         return getDataTable(scripts);
     }
 
+    @Log(title = "上传脚本", businessType = BusinessType.IMPORT)
     @PostMapping("/script/upload")
     public R<Map> scriptUploadController(@RequestParam("file") MultipartFile file) {
         Map<String, String> fileMd5Map = new HashMap<>();

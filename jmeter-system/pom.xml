@@ -36,6 +36,10 @@
 
         <dependency>
             <groupId>com.lzh.jmeter</groupId>
+            <artifactId>jmeter-log</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lzh.jmeter</groupId>
             <artifactId>jmeter-datasource</artifactId>
         </dependency>
     </dependencies>

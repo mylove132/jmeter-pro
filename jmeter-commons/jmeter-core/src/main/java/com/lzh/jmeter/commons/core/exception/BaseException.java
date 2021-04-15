@@ -16,7 +16,7 @@ public class BaseException extends RuntimeException
     /**
      * 错误码
      */
-    private String code;
+    private int code;
 
     /**
      * 错误码对应的参数
@@ -28,7 +28,7 @@ public class BaseException extends RuntimeException
      */
     private String defaultMessage;
 
-    public BaseException(String module, String code, Object[] args, String defaultMessage)
+    public BaseException(String module, int code, Object[] args, String defaultMessage)
     {
         this.module = module;
         this.code = code;
@@ -36,24 +36,24 @@ public class BaseException extends RuntimeException
         this.defaultMessage = defaultMessage;
     }
 
-    public BaseException(String module, String code, Object[] args)
+    public BaseException(String module, int code, Object[] args)
     {
         this(module, code, args, null);
     }
 
     public BaseException(String module, String defaultMessage)
     {
-        this(module, null, null, defaultMessage);
+        this(module, -1, null, defaultMessage);
     }
 
-    public BaseException(String code, Object[] args)
+    public BaseException(int code, Object[] args)
     {
         this(null, code, args, null);
     }
 
     public BaseException(String defaultMessage)
     {
-        this(null, null, null, defaultMessage);
+        this(null, -1, null, defaultMessage);
     }
 
     public String getModule()
@@ -61,7 +61,7 @@ public class BaseException extends RuntimeException
         return module;
     }
 
-    public String getCode()
+    public int getCode()
     {
         return code;
     }

@@ -1,4 +1,4 @@
-package com.lzh.jmeter.commons.log.aspect;
+package com.lzh.jmeter.system.aspect;
 
 import com.alibaba.fastjson.JSON;
 import com.lzh.jmeter.commons.core.utils.SecurityUtils;
@@ -7,8 +7,8 @@ import com.lzh.jmeter.commons.core.utils.StringUtils;
 import com.lzh.jmeter.commons.core.utils.ip.IpUtils;
 import com.lzh.jmeter.commons.log.annotation.Log;
 import com.lzh.jmeter.commons.log.enums.BusinessStatus;
-import com.lzh.jmeter.commons.log.service.AsyncLogService;
 import com.lzh.jmeter.system.domain.SysOperLog;
+import com.lzh.jmeter.system.service.ISysOperLogService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -40,8 +40,12 @@ public class LogAspect
 {
     private static final Logger log = LoggerFactory.getLogger(LogAspect.class);
 
-    @Autowired
-    private AsyncLogService asyncLogService;
+    private final ISysOperLogService sysOperLogService;
+
+    public LogAspect(ISysOperLogService sysOperLogService) {
+        this.sysOperLogService = sysOperLogService;
+    }
+
 
     // 配置织入点
     @Pointcut("@annotation(com.lzh.jmeter.commons.log.annotation.Log)")
@@ -93,6 +97,7 @@ public class LogAspect
             operLog.setJsonResult(JSON.toJSONString(jsonResult));
 
             operLog.setOperUrl(ServletUtils.getRequest().getRequestURI());
+            // todo 获取登陆用户姓名
             String username = SecurityUtils.getUsername();
             if (StringUtils.isNotBlank(username))
             {
@@ -113,7 +118,7 @@ public class LogAspect
             // 处理设置注解上的参数
             getControllerMethodDescription(joinPoint, controllerLog, operLog);
             // 保存数据库
-            asyncLogService.saveSysLog(operLog);
+            sysOperLogService.insertOperlog(operLog);
         }
         catch (Exception exp)
         {

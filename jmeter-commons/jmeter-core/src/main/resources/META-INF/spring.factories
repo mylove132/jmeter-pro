@@ -1,4 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.lzh.jmeter.commons.core.utils.SpringUtils
+  com.lzh.jmeter.commons.core.utils.SpringUtils,\
+  com.lzh.jmeter.commons.core.handle.GlobalDefultExceptionHandler
 
   
