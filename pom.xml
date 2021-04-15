@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.lzh.jmeter</groupId>
+    <artifactId>jmeter-pro</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+    <modules>
+        <module>jmeter-commons</module>
+        <module>jmeter-system</module>
+        <module>jmeter-job</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
+        <pagehelper.boot.version>1.3.0</pagehelper.boot.version>
+        <commons.io.version>2.5</commons.io.version>
+        <commons.fileupload.version>1.3.3</commons.fileupload.version>
+        <spring-boot.mybatis>2.1.3</spring-boot.mybatis>
+        <fastjson.version>1.2.75</fastjson.version>
+        <common-pool.version>2.6.2</common-pool.version>
+        <mysql.connection.version>5.1.30</mysql.connection.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- SpringBoot 依赖配置 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Mybatis 依赖配置 -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${spring-boot.mybatis}</version>
+            </dependency>
+            <!-- pagehelper 分页插件 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.boot.version}</version>
+            </dependency>
+            <!-- io常用工具类 -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+            <!-- 文件上传工具类 -->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${commons.fileupload.version}</version>
+            </dependency>
+            <!-- JSON 解析器和生成器 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <!-- 公共资源池 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${common-pool.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.connection.version}</version>
+            </dependency>
+
+            <!--项目核心依赖-->
+            <dependency>
+                <groupId>com.lzh.jmeter</groupId>
+                <artifactId>jmeter-core</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+
+            <!--长连接服务-->
+            <dependency>
+                <groupId>com.lzh.jmeter</groupId>
+                <artifactId>jmeter-websocket</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+
+            <!--系统服务-->
+            <dependency>
+                <groupId>com.lzh.jmeter</groupId>
+                <artifactId>jmeter-system</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+
+            <!--数据驱动-->
+            <dependency>
+                <groupId>com.lzh.jmeter</groupId>
+                <artifactId>jmeter-datasource</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+
+            <!--redis服务-->
+            <dependency>
+                <groupId>com.lzh.jmeter</groupId>
+                <artifactId>jmeter-redis</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+
+            <!--mq服务-->
+            <dependency>
+                <groupId>com.lzh.jmeter</groupId>
+                <artifactId>jmeter-mq</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
