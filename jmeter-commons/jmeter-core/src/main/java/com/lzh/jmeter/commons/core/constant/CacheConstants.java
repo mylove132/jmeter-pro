@@ -7,32 +7,19 @@ package com.lzh.jmeter.commons.core.constant;
 public class CacheConstants
 {
     /**
-     * 令牌自定义标识
-     */
-    public static final String HEADER = "Authorization";
-
-    /**
-     * 令牌前缀
-     */
-    public static final String TOKEN_PREFIX = "Bearer ";
-
-    /**
-     * 权限缓存前缀
-     */
-    public final static String LOGIN_TOKEN_KEY = "login_tokens:";
-
-    /**
-     * 用户ID字段
-     */
-    public static final String DETAILS_USER_ID = "user_id";
-
-    /**
-     * 用户名字段
-     */
-    public static final String DETAILS_USERNAME = "username";
-
-    /**
      * 授权信息字段
      */
     public static final String AUTHORIZATION_HEADER = "authorization";
+
+    public static final String AUTHORIZATION_USER_ID = "userId";
+
+    public static final String REFERENCED_SESSION_ID_SOURCE = "Stateless request";
+
+    // 用户redis缓存
+    public static final String USER_CACHE_ = "user_cache_";
+
+    // token失效时间
+    public static final int TOKEN_EXPIRE_TIME = 24 * 60 * 60;
+
+
 }

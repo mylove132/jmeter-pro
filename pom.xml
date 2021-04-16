@@ -26,6 +26,8 @@
         <mysql.connection.version>5.1.30</mysql.connection.version>
         <druid.version>1.1.17</druid.version>
         <okhttp.version>3.6.0</okhttp.version>
+        <shiro-spring.version>1.4.0</shiro-spring.version>
+        <shiro-redis.version>3.1.0</shiro-redis.version>
     </properties>
 
     <dependencyManagement>
@@ -67,6 +69,18 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring</artifactId>
+                <version>${shiro-spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.crazycake</groupId>
+                <artifactId>shiro-redis</artifactId>
+                <version>${shiro-redis.version}</version>
             </dependency>
 
             <dependency>

@@ -1,9 +1,10 @@
 package com.lzh.jmeter.commons.mq.consumer;
 
 import com.alibaba.fastjson.JSONObject;
+import com.lzh.jmeter.commons.core.constant.CacheConstants;
 import com.lzh.jmeter.commons.core.constant.RabbitmqConstants;
 import com.lzh.jmeter.commons.core.domain.BaseMqMessage;
-import com.lzh.jmeter.commons.core.utils.SecurityUtils;
+import com.lzh.jmeter.commons.core.utils.ServletUtils;
 import com.lzh.jmeter.commons.websocket.utils.LocalSession;
 import com.rabbitmq.client.Channel;
 import org.slf4j.Logger;
@@ -55,7 +56,7 @@ public class RabbitConsumer {
     public void sendRunSuccessMessageToWs (Message message, Channel channel) throws IOException {
         try {
             BaseMqMessage baseMqMessage = JSONObject.parseObject(new String(message.getBody()), BaseMqMessage.class);
-            Session session = LocalSession.getLocalSession(String.valueOf(SecurityUtils.getUserId()));
+            Session session = LocalSession.getLocalSession(String.valueOf(ServletUtils.getRequest().getHeader(CacheConstants.AUTHORIZATION_USER_ID)));
             LocalSession.sendMessage(session, baseMqMessage);
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);//确认消息成功消费
         }catch (IOException e) {

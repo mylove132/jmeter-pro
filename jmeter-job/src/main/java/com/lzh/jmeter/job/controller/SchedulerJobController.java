@@ -31,7 +31,7 @@ public class SchedulerJobController extends BaseController {
     }
 
     @Log(title = "获取定时任务列表")
-    @GetMapping("/job")
+    @GetMapping("/job/list")
     public R<List<SchedulerJob>> getSchedulerJobListController () throws TaskException {
         startPage();
         List<SchedulerJob> schedulerJobs = schedulerJobService.schedulerJobs();

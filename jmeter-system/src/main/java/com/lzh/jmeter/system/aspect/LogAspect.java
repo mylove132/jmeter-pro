@@ -1,14 +1,16 @@
 package com.lzh.jmeter.system.aspect;
 
 import com.alibaba.fastjson.JSON;
-import com.lzh.jmeter.commons.core.utils.SecurityUtils;
+import com.lzh.jmeter.commons.core.constant.CacheConstants;
 import com.lzh.jmeter.commons.core.utils.ServletUtils;
 import com.lzh.jmeter.commons.core.utils.StringUtils;
 import com.lzh.jmeter.commons.core.utils.ip.IpUtils;
 import com.lzh.jmeter.commons.log.annotation.Log;
 import com.lzh.jmeter.commons.log.enums.BusinessStatus;
 import com.lzh.jmeter.system.domain.SysOperLog;
+import com.lzh.jmeter.system.domain.User;
 import com.lzh.jmeter.system.service.ISysOperLogService;
+import com.lzh.jmeter.system.service.IUserService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -18,7 +20,6 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -40,10 +41,15 @@ public class LogAspect
 {
     private static final Logger log = LoggerFactory.getLogger(LogAspect.class);
 
+    private final IUserService userService;
+
+
+
     private final ISysOperLogService sysOperLogService;
 
-    public LogAspect(ISysOperLogService sysOperLogService) {
+    public LogAspect(ISysOperLogService sysOperLogService, IUserService userService) {
         this.sysOperLogService = sysOperLogService;
+        this.userService = userService;
     }
 
 
@@ -98,10 +104,12 @@ public class LogAspect
 
             operLog.setOperUrl(ServletUtils.getRequest().getRequestURI());
             // todo 获取登陆用户姓名
-            String username = SecurityUtils.getUsername();
-            if (StringUtils.isNotBlank(username))
+            String token = ServletUtils.getRequest().getHeader(CacheConstants.AUTHORIZATION_HEADER);
+            token = ServletUtils.urlDecode(token);
+            User user = userService.findByToken(token);
+            if (StringUtils.isNotNull(user))
             {
-                operLog.setOperName(username);
+                operLog.setOperName(user.getUserName());
             }
 
             if (e != null)
