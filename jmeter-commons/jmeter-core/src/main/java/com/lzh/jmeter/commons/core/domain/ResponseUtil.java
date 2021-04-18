@@ -62,6 +62,11 @@ public class ResponseUtil<T> {
         this.responseData.setMessage("error");
         return this.responseData;
     }
+    public ResponseData<T> fail(Throwable e){
+        this.responseData.setCode(Constants.FAIL);
+        this.responseData.setMessage(e.getMessage());
+        return this.responseData;
+    }
 
     public ResponseData<T> fail(int code, String message){
         this.responseData.setCode(code);

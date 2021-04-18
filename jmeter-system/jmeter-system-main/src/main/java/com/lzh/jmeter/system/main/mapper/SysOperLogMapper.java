@@ -1,5 +1,5 @@
 package com.lzh.jmeter.system.main.mapper;
-import com.lzh.jmeter.system.main.domain.SysOperLog;
+import com.lzh.jmeter.system.api.domain.SysOperLog;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

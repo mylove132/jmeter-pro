@@ -1,6 +1,7 @@
 package com.lzh.jmeter.commons.core.web.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.lzh.jmeter.commons.core.domain.AbstractRequest;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.Map;
  * Entity基类
  *
  */
-public class BaseEntity implements Serializable
+public class BaseEntity extends AbstractRequest implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
@@ -48,5 +49,10 @@ public class BaseEntity implements Serializable
 
     public void setDeleted(int deleted) {
         this.deleted = deleted;
+    }
+
+    @Override
+    public void requestCheck() {
+
     }
 }

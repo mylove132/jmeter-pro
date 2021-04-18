@@ -19,6 +19,7 @@
         <module>jmeter-websocket</module>
         <module>jmeter-datasource</module>
         <module>jmeter-task</module>
+        <module>jmeter-security</module>
     </modules>
 
 

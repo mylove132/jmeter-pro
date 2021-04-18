@@ -37,6 +37,13 @@ public class Constants
     public static final Integer FAIL = -1;
 
     /**
+     * 无权限
+     */
+    public static final Integer NOT_PREMISSION = 101;
+
+
+
+    /**
      * 登录成功
      */
     public static final String LOGIN_SUCCESS = "Success";

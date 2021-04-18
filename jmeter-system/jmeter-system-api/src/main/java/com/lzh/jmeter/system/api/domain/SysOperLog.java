@@ -1,4 +1,4 @@
-package com.lzh.jmeter.system.main.domain;
+package com.lzh.jmeter.system.api.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.lzh.jmeter.commons.core.web.domain.BaseEntity;
@@ -6,8 +6,10 @@ import com.lzh.jmeter.commons.core.web.domain.BaseEntity;
 import java.util.Date;
 
 /**
- * 操作日志记录表 oper_log
- *
+ * @Author: liuzhanhui
+ * @Decription:
+ * @Date: Created in 2021-04-18:21:51
+ * Modify date: 2021-04-18:21:51
  */
 public class SysOperLog extends BaseEntity
 {
@@ -36,9 +38,6 @@ public class SysOperLog extends BaseEntity
 
     /** 操作人员 */
     private String operName;
-
-    /** 部门名称 */
-    private String deptName;
 
     /** 请求url */
     private String operUrl;
@@ -141,17 +140,7 @@ public class SysOperLog extends BaseEntity
     {
         this.operName = operName;
     }
-
-    public String getDeptName()
-    {
-        return deptName;
-    }
-
-    public void setDeptName(String deptName)
-    {
-        this.deptName = deptName;
-    }
-
+    
     public String getOperUrl()
     {
         return operUrl;

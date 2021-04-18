@@ -2,8 +2,7 @@ package com.lzh.jmeter.system.api.service;
 
 import com.lzh.jmeter.commons.core.domain.ResponseData;
 import com.lzh.jmeter.commons.core.exception.BizException;
-import com.lzh.jmeter.system.api.domain.request.SysOperLogRequest;
-import com.lzh.jmeter.system.api.domain.response.SysOperLogResponse;
+import com.lzh.jmeter.system.api.domain.SysOperLog;
 
 /**
  * @Author: liuzhanhui
@@ -15,8 +14,8 @@ public interface ISysOperLogService {
 
     /**
      * 保存系统日志
-     * @param sysOperLogRequest
+     * @param sysOperLog
      * @return
      */
-    ResponseData<SysOperLogResponse> saveSysOperLogService (SysOperLogRequest sysOperLogRequest) throws BizException;
+    ResponseData<Boolean> saveSysOperLogService (SysOperLog sysOperLog) throws BizException;
 }
