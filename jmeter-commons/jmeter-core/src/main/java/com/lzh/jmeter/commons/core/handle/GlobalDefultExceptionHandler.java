@@ -1,8 +1,10 @@
 package com.lzh.jmeter.commons.core.handle;
 
-import com.lzh.jmeter.commons.core.domain.R;
-import com.lzh.jmeter.commons.core.exception.BaseException;
-import com.lzh.jmeter.commons.core.exception.job.TaskException;
+import com.lzh.jmeter.commons.core.domain.ResponseData;
+import com.lzh.jmeter.commons.core.domain.ResponseUtil;
+import com.lzh.jmeter.commons.core.exception.BaseBusinessException;
+import com.lzh.jmeter.commons.core.exception.BizException;
+import com.lzh.jmeter.commons.core.exception.CommonExceptionEnumInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -22,27 +24,26 @@ public class GlobalDefultExceptionHandler {
     //通用异常
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public <T> R<?> defultExcepitonHandler(HttpServletRequest request, Exception e) {
+    public <T> ResponseData<?> defultExcepitonHandler(HttpServletRequest request, Exception e) {
         e.printStackTrace();
-        if(e instanceof BaseException) {
-            BaseException businessException = (BaseException)e;
-            return R.fail(businessException.getCode(), businessException.getMessage());
+        if(e instanceof BaseBusinessException) {
+            BaseBusinessException businessException = (BaseBusinessException)e;
+            return new ResponseUtil().fail(businessException.getErrorCode(), businessException.getMessage());
         }
         //未知错误
-        return R.fail(-1, "系统异常：\\n"+e);
+        return new ResponseUtil().fail(CommonExceptionEnumInterface.FAIL);
     }
 
-    //定时任务异常
-    @ExceptionHandler(TaskException.class)
+    //通用异常
+    @ExceptionHandler(BizException.class)
     @ResponseBody
-    public <T> R<?> taskExcepitonHandler(HttpServletRequest request, Exception e) {
+    public <T> ResponseData<?> bizExcepitonHandler(Exception e) {
         e.printStackTrace();
-        if(e instanceof TaskException) {
-            TaskException businessException = (TaskException)e;
-            return R.fail(businessException.getCode(), businessException.getMessage());
+        if(e instanceof BizException) {
+            BizException bizException = (BizException)e;
+            return new ResponseUtil().fail(bizException.getErrorCode(), bizException.getMessage());
         }
         //未知错误
-        return R.fail(-1, "系统异常：\\n"+e);
+        return new ResponseUtil().fail(CommonExceptionEnumInterface.FAIL);
     }
-
 }

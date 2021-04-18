@@ -2,8 +2,9 @@ package com.lzh.jmeter.commons.core.web.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.lzh.jmeter.commons.core.constant.HttpStatus;
-import com.lzh.jmeter.commons.core.domain.R;
+import com.lzh.jmeter.commons.core.constant.Constants;
+import com.lzh.jmeter.commons.core.domain.ResponseData;
+import com.lzh.jmeter.commons.core.domain.ResponseUtil;
 import com.lzh.jmeter.commons.core.utils.DateUtils;
 import com.lzh.jmeter.commons.core.utils.StringUtils;
 import com.lzh.jmeter.commons.core.utils.sql.SqlUtil;
@@ -63,7 +64,7 @@ public class BaseController
     protected TableDataInfo getDataTable(List<?> list)
     {
         TableDataInfo rspData = new TableDataInfo();
-        rspData.setCode(R.SUCCESS);
+        rspData.setCode(Constants.SUCCESS);
         rspData.setRows(list);
         rspData.setMsg("查询成功");
         rspData.setTotal(new PageInfo(list).getTotal());
@@ -76,8 +77,8 @@ public class BaseController
      * @param rows 影响行数
      * @return 操作结果
      */
-    protected R toResult(int rows)
+    protected ResponseData toResult(int rows)
     {
-        return rows > 0 ? R.ok() : R.fail();
+        return rows > 0 ? new ResponseUtil().success("ok") : new ResponseUtil().fail();
     }
 }

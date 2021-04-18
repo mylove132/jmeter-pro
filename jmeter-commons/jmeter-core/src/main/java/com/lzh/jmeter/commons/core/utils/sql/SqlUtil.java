@@ -1,6 +1,6 @@
 package com.lzh.jmeter.commons.core.utils.sql;
-
-import com.lzh.jmeter.commons.core.exception.BaseException;
+import com.lzh.jmeter.commons.core.exception.CommonExceptionEnumInterface;
+import com.lzh.jmeter.commons.core.exception.ValidateException;
 import com.lzh.jmeter.commons.core.utils.StringUtils;
 
 /**
@@ -21,7 +21,7 @@ public class SqlUtil
     {
         if (StringUtils.isNotEmpty(value) && !isValidOrderBySql(value))
         {
-            throw new BaseException("参数不符合规范，不能进行查询");
+            throw new ValidateException(CommonExceptionEnumInterface.UTIL_SQL_VALIDATE_EXCEPTION);
         }
         return value;
     }

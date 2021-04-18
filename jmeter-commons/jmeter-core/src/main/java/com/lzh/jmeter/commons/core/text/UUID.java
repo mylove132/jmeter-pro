@@ -1,6 +1,7 @@
 package com.lzh.jmeter.commons.core.text;
 
-import com.lzh.jmeter.commons.core.exception.UtilException;
+import com.lzh.jmeter.commons.core.exception.ValidateException;
+import com.sun.xml.internal.ws.util.UtilException;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -467,7 +468,7 @@ public final class UUID implements java.io.Serializable, Comparable<UUID>
         }
         catch (NoSuchAlgorithmException e)
         {
-            throw new UtilException(e);
+            throw new ValidateException(e);
         }
     }
 

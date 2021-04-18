@@ -1,25 +1,37 @@
 package com.lzh.jmeter.commons.core.exception;
 
+import com.lzh.jmeter.commons.core.domain.AbstractResponse;
+
 /**
- * 工具类异常
- *
+ * @Author: liuzhanhui
+ * @Decription:
+ * @Date: Created in 2021-04-18:07:33
+ * Modify date: 2021-04-18:07:33
  */
-public class UtilException extends RuntimeException
-{
-    private static final long serialVersionUID = 8247610319171014183L;
-
-    public UtilException(Throwable e)
-    {
-        super(e.getMessage(), e);
-    }
-
-    public UtilException(String message)
-    {
-        super(message);
-    }
-
-    public UtilException(String message, Throwable throwable)
-    {
-        super(message, throwable);
+public class UtilException {
+    /**
+     * 将下层抛出的异常转换为resp返回码
+     *
+     * @param e Exception
+     * @return
+     */
+    public static AbstractResponse handlerException4biz(AbstractResponse response, Exception e) throws Exception {
+        Exception ex = null;
+        if (!(e instanceof Exception)) {
+            return null;
+        }
+        if (e instanceof ValidateException) {
+            response.setCode(((ValidateException) e).getErrorCode());
+            response.setMsg(e.getMessage());
+        }else if(e instanceof ProcessException) {
+            response.setCode(((ProcessException) e).getErrorCode());
+            response.setMsg(e.getMessage());
+        }else if(e instanceof BizException) {
+            response.setCode(((BizException) e).getErrorCode());
+            response.setMsg(e.getMessage());
+        }else if (e instanceof Exception) {
+            throw e; //处理不了，抛出去调用方处理
+        }
+        return response;
     }
 }
