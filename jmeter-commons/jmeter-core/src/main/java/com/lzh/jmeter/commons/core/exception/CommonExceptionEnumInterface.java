@@ -12,7 +12,9 @@ public enum  CommonExceptionEnumInterface implements ExceptionEnumInterface
 {
     SUCCESS(Constants.SUCCESS, "OK"),
     FAIL(Constants.FAIL,"error"),
-    UTIL_SQL_VALIDATE_EXCEPTION(10001, "参数不符合规范，不能进行查询");
+    UTIL_SQL_VALIDATE_EXCEPTION(10001, "参数不符合规范，不能进行查询"),
+    NOT_AUTHORITIES(50000, "没有认证"),
+    LOGIN_FAIL(50001, "登录失败"),;
 
     /**
      * 错误码

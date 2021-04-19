@@ -21,6 +21,20 @@ public class ResponseUtil<T> {
         return this.responseData;
     }
 
+    public ResponseData<T> success(){
+        this.responseData.setCode(Constants.SUCCESS);
+        this.responseData.setMessage("OK");
+        this.responseData.setData(null);
+        return this.responseData;
+    }
+
+    public ResponseData<T> success(String msg){
+        this.responseData.setCode(Constants.SUCCESS);
+        this.responseData.setMessage(msg);
+        this.responseData.setData(null);
+        return this.responseData;
+    }
+
     public ResponseData<T> fail(){
         this.responseData.setCode(Constants.FAIL);
         this.responseData.setMessage("error");
