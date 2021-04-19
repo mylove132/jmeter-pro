@@ -9,7 +9,7 @@ public abstract class AbstractResponse implements Serializable {
 
     private static final long serialVersionUID = 7505997295595095971L;
     private int code;
-    private String msg;
+    private String message;
 
     public int getCode() {
         return code;
@@ -19,11 +19,11 @@ public abstract class AbstractResponse implements Serializable {
         this.code = code;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

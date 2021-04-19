@@ -22,13 +22,13 @@ public class UtilException {
         }
         if (e instanceof ValidateException) {
             response.setCode(((ValidateException) e).getErrorCode());
-            response.setMsg(e.getMessage());
+            response.setMessage(e.getMessage());
         }else if(e instanceof ProcessException) {
             response.setCode(((ProcessException) e).getErrorCode());
-            response.setMsg(e.getMessage());
+            response.setMessage(e.getMessage());
         }else if(e instanceof BizException) {
             response.setCode(((BizException) e).getErrorCode());
-            response.setMsg(e.getMessage());
+            response.setMessage(e.getMessage());
         }else if (e instanceof Exception) {
             throw e; //处理不了，抛出去调用方处理
         }

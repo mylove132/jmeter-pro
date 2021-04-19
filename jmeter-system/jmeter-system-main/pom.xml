@@ -11,10 +11,6 @@
     <artifactId>jmeter-system-main</artifactId>
 
     <dependencies>
-    <dependency>
-            <groupId>com.lzh.jmeter</groupId>
-            <artifactId>jmeter-core</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.lzh.jmeter</groupId>
             <artifactId>jmeter-system-api</artifactId>
@@ -68,23 +64,4 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
-    <build>
-        <finalName>${project.artifactId}</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>

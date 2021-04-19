@@ -1,7 +1,10 @@
 package com.lzh.jmeter.system.api.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.lzh.jmeter.commons.core.exception.ValidateException;
+import com.lzh.jmeter.commons.core.utils.StringUtils;
 import com.lzh.jmeter.commons.core.web.domain.BaseEntity;
+import com.lzh.jmeter.system.api.errorcode.SystemCode;
 
 import java.util.Date;
 
@@ -209,5 +212,12 @@ public class SysOperLog extends BaseEntity
     public void setOperTime(Date operTime)
     {
         this.operTime = operTime;
+    }
+
+    @Override
+    public void requestCheck() {
+        if (StringUtils.isBlank(title)) {
+            throw new ValidateException(SystemCode.LOG_REQUISITE_PARAMETER_NOT_EXIST);
+        }
     }
 }

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jmeter-system</artifactId>
-
+    <packaging>pom</packaging>
     <modules>
         <module>jmeter-system-api</module>
         <module>jmeter-system-main</module>

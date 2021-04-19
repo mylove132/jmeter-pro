@@ -17,7 +17,7 @@ public class SecurityUtils
     public static String getUsername()
     {
         String username = ServletUtils.getRequest().getHeader(CacheConstants.DETAILS_USERNAME);
-        return ServletUtils.urlDecode(username);
+        return ServletUtils.urlDecode(username == null ? "张三" : username);
     }
 
     /**

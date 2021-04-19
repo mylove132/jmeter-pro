@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jmeter-core</artifactId>
+    <packaging>jar</packaging>
 
     <properties>
         <httpclient.version>4.5.5</httpclient.version>

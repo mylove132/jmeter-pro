@@ -33,7 +33,6 @@ import com.alibaba.fastjson.JSON;
 /**
  * 操作日志记录处理
  *
- * @author ruoyi
  */
 @Aspect
 @Component

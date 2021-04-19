@@ -19,6 +19,12 @@
         <dependency>
             <groupId>com.lzh.jmeter</groupId>
             <artifactId>jmeter-redis</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.lzh.jmeter</groupId>
+                    <artifactId>jmeter-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

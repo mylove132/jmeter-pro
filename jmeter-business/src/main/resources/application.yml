@@ -1,20 +1,8 @@
 server:
-  port: 8001
-dubbo:
-  scan:
-    base-packages: com.lzh.jmeter.system.main.service # 接口扫描地址
-  protocol:
-    name: dubbo
-    port: 20880 # dubbo协议 端口随机
-  registry:
-    address: zookeeper://127.0.0.1:2181 # zookeeper连接地址
-    timeout: 10000 # 超时时间
-  metadata-report:
-    address: zookeeper://127.0.0.1:2181 # 数据元中心
-
+  port: 9000
 spring:
   application:
-    name: jmeter-system
+    name: jmeter-business
   datasource:
     master:
       jdbc-url: jdbc:mysql://localhost:3307/nethp-test?user=root&password=&useUnicode=true&characterEncoding=gbk&autoReconnect=true&failOverReadOnly=false
@@ -44,6 +32,10 @@ spring:
     port: 5672
     username: guest
     password: guest
-logging:
-  level:
-    com.lzh.jmeter.system.main.mapper: debug
+dubbo:
+  registry:
+    address: zookeeper://127.0.0.1:2181
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

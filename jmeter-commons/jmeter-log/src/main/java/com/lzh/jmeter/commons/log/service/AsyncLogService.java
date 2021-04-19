@@ -1,7 +1,8 @@
 package com.lzh.jmeter.commons.log.service;
 import com.lzh.jmeter.system.api.domain.SysOperLog;
 import com.lzh.jmeter.system.api.service.ISysOperLogService;
-import org.springframework.scheduling.annotation.Async;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,15 +12,12 @@ import org.springframework.stereotype.Service;
  * Modify date: 2021-04-18:15:40
  */
 @Service
+@Slf4j
 public class AsyncLogService {
 
-    private final ISysOperLogService sysOperLogService;
+    @DubboReference(timeout = 30000, async = true)
+    private ISysOperLogService sysOperLogService;
 
-    public AsyncLogService(ISysOperLogService sysOperLogService) {
-        this.sysOperLogService = sysOperLogService;
-    }
-
-    @Async
     public void saveSysLog(SysOperLog sysOperLog)
     {
         sysOperLogService.saveSysOperLogService(sysOperLog);

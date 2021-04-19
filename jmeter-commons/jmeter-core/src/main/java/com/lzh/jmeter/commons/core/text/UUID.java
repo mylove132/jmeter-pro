@@ -1,8 +1,6 @@
 package com.lzh.jmeter.commons.core.text;
 
 import com.lzh.jmeter.commons.core.exception.ValidateException;
-import com.sun.xml.internal.ws.util.UtilException;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
