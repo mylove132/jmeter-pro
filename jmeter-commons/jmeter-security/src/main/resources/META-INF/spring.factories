@@ -1,4 +1,13 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.lzh.jmeter.security.service.TokenService,\
-  com.lzh.jmeter.security.aspect.PreAuthorizeAspect,\
+  com.lzh.jmeter.security.config.JmeterAccessDeniedHandle,\
+  com.lzh.jmeter.security.config.ApplicationConfig,\
+  com.lzh.jmeter.security.config.JmeterAuthenticationEntryPoint,\
+  com.lzh.jmeter.security.config.JmeterAuthenticationFailureHandler,\
+  com.lzh.jmeter.security.config.JmeterAuthenticationProvider,\
+  com.lzh.jmeter.security.config.JmeterAuthenticationSuccessHandler,\
+  com.lzh.jmeter.security.config.JmeterLogoutSuccessHandler,\
+  com.lzh.jmeter.security.config.JmeterUserDetail,\
+  com.lzh.jmeter.security.config.JmeterWebSecurityConfigure,\
+  com.lzh.jmeter.security.config.SysUserDetailsService,\
   com.lzh.jmeter.security.handle.GlobalExceptionHandler

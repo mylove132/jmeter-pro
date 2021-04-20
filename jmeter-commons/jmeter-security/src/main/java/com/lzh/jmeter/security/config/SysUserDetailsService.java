@@ -3,6 +3,7 @@ package com.lzh.jmeter.security.config;
 import com.lzh.jmeter.commons.core.domain.ResponseData;
 import com.lzh.jmeter.system.api.domain.SysRole;
 import com.lzh.jmeter.system.api.domain.SysUser;
+import com.lzh.jmeter.system.api.model.LoginUser;
 import com.lzh.jmeter.system.api.service.ISysUserService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.security.core.GrantedAuthority;
@@ -22,8 +23,8 @@ public class SysUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        ResponseData<SysUser> responseData = sysUserService.selectSysUserByName(s);
-        SysUser user = responseData.getData();
+        ResponseData<LoginUser> responseData = sysUserService.selectSysUserByName(s);
+        SysUser user = responseData.getData().getSysUser();
         JmeterUserDetail userDetail = new JmeterUserDetail();
         userDetail.setUsername(user.getUserName());
         userDetail.setPassword(user.getPassword());

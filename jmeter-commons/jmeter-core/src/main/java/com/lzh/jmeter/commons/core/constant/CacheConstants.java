@@ -17,7 +17,7 @@ public class CacheConstants
     public static final String TOKEN_PREFIX = "Bearer ";
 
     /**
-     * 权限缓存前缀
+     * 登录token前缀
      */
     public final static String LOGIN_TOKEN_KEY = "login_tokens:";
 

@@ -44,12 +44,10 @@ public class TokenService
         loginUser.setUsername(loginUser.getSysUser().getUserName());
         loginUser.setIpaddr(IpUtils.getIpAddr(ServletUtils.getRequest()));
         refreshToken(loginUser);
-
         // 保存或更新用户token
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("access_token", token);
-        map.put("expires_in", EXPIRE_TIME);
-        redisService.set(ACCESS_TOKEN + token, loginUser, EXPIRE_TIME);
+        map.put("token", token);
+        map.put("expirTime", EXPIRE_TIME);
         return map;
     }
 
@@ -111,13 +109,13 @@ public class TokenService
         loginUser.setLoginTime(System.currentTimeMillis());
         loginUser.setExpireTime(loginUser.getLoginTime() + EXPIRE_TIME * MILLIS_SECOND);
         // 根据uuid将loginUser缓存
-        String userKey = getTokenKey(loginUser.getToken());
+        String userKey = getTokenKey(loginUser.getUsername());
         redisService.set(userKey, loginUser, EXPIRE_TIME);
     }
 
-    private String getTokenKey(String token)
+    private String getTokenKey(String loginUsername)
     {
-        return ACCESS_TOKEN + token;
+        return CacheConstants.LOGIN_TOKEN_KEY + loginUsername;
     }
 }
 

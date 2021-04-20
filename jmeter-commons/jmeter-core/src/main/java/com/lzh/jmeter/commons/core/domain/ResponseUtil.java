@@ -55,6 +55,7 @@ public class ResponseUtil<T> {
     public ResponseData<T> fail(ExceptionEnumInterface exceptionEnumInterface){
         this.responseData.setCode(exceptionEnumInterface.getCode());
         this.responseData.setMessage(exceptionEnumInterface.getMessage());
+        this.responseData.setData(null);
         return this.responseData;
     }
 
