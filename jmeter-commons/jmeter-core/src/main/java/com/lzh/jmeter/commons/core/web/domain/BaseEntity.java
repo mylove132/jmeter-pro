@@ -25,7 +25,7 @@ public class BaseEntity extends AbstractRequest implements Serializable
     private Date updateTime;
 
     /** 逻辑删除 */
-    private int deleted;
+    private String deleted;
 
     public Date getCreateTime() {
         return createTime;
@@ -43,11 +43,11 @@ public class BaseEntity extends AbstractRequest implements Serializable
         this.updateTime = updateTime;
     }
 
-    public int getDeleted() {
+    public String getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(int deleted) {
+    public void setDeleted(String deleted) {
         this.deleted = deleted;
     }
 

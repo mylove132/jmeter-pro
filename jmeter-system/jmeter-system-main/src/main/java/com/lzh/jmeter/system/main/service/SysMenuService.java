@@ -1,6 +1,7 @@
 package com.lzh.jmeter.system.main.service;
 
 import com.lzh.jmeter.commons.core.domain.ResponseData;
+import com.lzh.jmeter.commons.core.domain.ResponseUtil;
 import com.lzh.jmeter.system.api.domain.SysMenu;
 import com.lzh.jmeter.system.api.service.ISysMenuService;
 import com.lzh.jmeter.system.main.mapper.SysMenuMapper;
@@ -27,7 +28,11 @@ public class SysMenuService implements ISysMenuService
 
     @Override
     public ResponseData<List<SysMenu>> selectMenuList(Long userId) {
-        return null;
+        List<SysMenu> menus = new ArrayList<>();
+        SysMenu sysMenu = new SysMenu();
+        sysMenu.setMenuName("首页");
+        menus.add(sysMenu);
+        return new ResponseUtil().success(menus);
     }
 
     @Override
@@ -37,7 +42,9 @@ public class SysMenuService implements ISysMenuService
 
     @Override
     public ResponseData<Set<String>> selectMenuPermsByUserId(Long userId) {
-        return null;
+        Set<String> perms = new HashSet<>();
+        perms.add("admin");
+        return new ResponseUtil().success(perms);
     }
 
     @Override

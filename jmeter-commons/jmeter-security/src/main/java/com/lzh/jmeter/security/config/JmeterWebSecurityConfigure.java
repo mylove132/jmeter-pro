@@ -41,6 +41,7 @@ public class JmeterWebSecurityConfigure extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         log.info("------------------------------:{}", SecurityUtils.encryptPassword("123456"));
+        log.info("------------------------------:{}", SecurityUtils.encryptPassword("123456"));
         http.csrf().disable()
                 .httpBasic().authenticationEntryPoint(jmeterAuthenticationEntryPoint)
                 .and()
@@ -63,5 +64,14 @@ public class JmeterWebSecurityConfigure extends WebSecurityConfigurerAdapter {
 
         http.exceptionHandling().accessDeniedHandler(jmeterAccessDeniedHandle); // 无权访问 JSON 格式的数据
 
+    }
+
+    public static void main(String[] args) {
+        String a = SecurityUtils.encryptPassword("123456");
+        String b = SecurityUtils.encryptPassword("123456");
+        System.out.println(a);
+        System.out.println(b);
+        boolean c = SecurityUtils.matchesPassword("123456", "$2a$10$/fUmV0rYN.tCdIgqIm7JWex/Y32cIJiAQ1fWvpnngdEIxiXb5AGcm");
+        System.out.println(c);
     }
 }

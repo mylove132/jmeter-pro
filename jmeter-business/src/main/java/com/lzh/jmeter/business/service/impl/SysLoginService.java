@@ -8,6 +8,7 @@ import com.lzh.jmeter.commons.core.utils.StringUtils;
 import com.lzh.jmeter.system.api.domain.SysUser;
 import com.lzh.jmeter.system.api.model.LoginUser;
 import com.lzh.jmeter.system.api.service.ISysUserService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
  * 登录校验方法
  * 
   */
+@Slf4j
 @Component
 public class SysLoginService implements ISysLoginService {
 
@@ -39,7 +41,7 @@ public class SysLoginService implements ISysLoginService {
         }
         LoginUser userInfo = userResult.getData();
         SysUser user = userResult.getData().getSysUser();
-        if (user.getDeleted() == 1)
+        if ("1".equals(user.getDeleted()))
         {
             throw new BaseBusinessException(20003, "对不起，您的账号：" + username + " 已被删除");
         }
@@ -47,6 +49,9 @@ public class SysLoginService implements ISysLoginService {
         {
             throw new BaseBusinessException(20004, "对不起，您的账号：" + username + " 已停用");
         }
+        log.info("登录的明码：{}", password);
+        log.info("加密明码：{}", SecurityUtils.encryptPassword(password));
+        log.info("数据库的密码：{}", user.getPassword());
         if (!SecurityUtils.matchesPassword(password, user.getPassword()))
         {
             throw new BaseBusinessException(20005, "用户不存在/密码错误");

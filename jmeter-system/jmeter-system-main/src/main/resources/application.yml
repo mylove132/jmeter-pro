@@ -17,12 +17,12 @@ spring:
     name: jmeter-system
   datasource:
     master:
-      jdbc-url: jdbc:mysql://localhost:3307/nethp-test?user=root&password=&useUnicode=true&characterEncoding=gbk&autoReconnect=true&failOverReadOnly=false
+      jdbc-url: jdbc:mysql://localhost:3306/nethp-test?user=root&password=&useUnicode=true&characterEncoding=gbk&autoReconnect=true&failOverReadOnly=false
       username: root
       password: 123456
       driver-class-name: com.mysql.jdbc.Driver
     slave:
-      jdbc-url: jdbc:mysql://localhost:3308/nethp-test?user=root&password=&useUnicode=true&characterEncoding=gbk&autoReconnect=true&failOverReadOnly=false
+      jdbc-url: jdbc:mysql://localhost:3306/nethp-test?user=root&password=&useUnicode=true&characterEncoding=gbk&autoReconnect=true&failOverReadOnly=false
       username: root   # 只读账户
       password: 123456
       driver-class-name: com.mysql.jdbc.Driver

@@ -10,12 +10,6 @@ public class CacheConstants
      * 令牌自定义标识
      */
     public static final String HEADER = "Authorization";
-
-    /**
-     * 令牌前缀
-     */
-    public static final String TOKEN_PREFIX = "Bearer ";
-
     /**
      * 登录token前缀
      */
