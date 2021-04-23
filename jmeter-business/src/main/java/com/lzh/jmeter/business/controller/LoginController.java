@@ -1,6 +1,7 @@
 package com.lzh.jmeter.business.controller;
 
 import com.lzh.jmeter.business.domain.vo.LoginVO;
+import com.lzh.jmeter.business.domain.vo.TokenVO;
 import com.lzh.jmeter.business.service.ISysLoginService;
 import com.lzh.jmeter.commons.core.domain.ResponseData;
 import com.lzh.jmeter.commons.core.domain.ResponseUtil;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -26,7 +29,13 @@ public class LoginController {
 
     @PostMapping("login")
     public ResponseData<?> login(@RequestBody LoginVO loginVO) {
-        LoginUser loginUser = sysLoginService.login(loginVO.getUserName(), loginVO.getPassword());
-       return  new ResponseUtil().success(tokenService.createToken(loginUser));
+        TokenVO tokenVO = new TokenVO();
+        LoginUser loginUser = sysLoginService.login(loginVO.getUsername(), loginVO.getPassword());
+        Map<String, String> tokenResult = tokenService.createToken(loginVO.getUsername());
+        tokenVO.setExpireTime(tokenResult.get("expireTime"));
+        tokenVO.setToken(tokenResult.get("token"));
+        tokenVO.setUserName(loginVO.getUsername());
+        tokenVO.setUserId(loginUser.getSysUser().getUserId());
+       return  new ResponseUtil().success(tokenVO);
     }
 }

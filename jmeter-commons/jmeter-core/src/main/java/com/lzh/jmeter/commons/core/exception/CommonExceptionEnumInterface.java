@@ -14,7 +14,9 @@ public enum  CommonExceptionEnumInterface implements ExceptionEnumInterface
     FAIL(Constants.FAIL,"error"),
     UTIL_SQL_VALIDATE_EXCEPTION(10001, "参数不符合规范，不能进行查询"),
     NOT_AUTHORITIES(50000, "NOT AUTH"),
-    LOGIN_FAIL(50001, "LOGIN FAIL"),;
+    AUTHORITIES_FAIL(50001, "AUTH FAIL"),
+    AUTHORITIES_EXPIRED(50002, "AUTH EXPIRED"),
+    LOGIN_FAIL(50003, "LOGIN FAIL"),;
 
     /**
      * 错误码

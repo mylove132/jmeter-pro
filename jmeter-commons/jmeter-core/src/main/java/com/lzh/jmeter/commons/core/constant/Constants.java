@@ -96,7 +96,7 @@ public class Constants
     /**
      * 令牌有效期（分钟）
      */
-    public final static long TOKEN_EXPIRE = 720;
+    public final static long TOKEN_EXPIRE = 720 * 60;
 
     /**
      * 参数管理 cache key

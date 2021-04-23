@@ -1,6 +1,5 @@
 package com.lzh.jmeter.commons.core.utils;
 import javax.servlet.http.HttpServletRequest;
-
 import com.lzh.jmeter.commons.core.constant.CacheConstants;
 import com.lzh.jmeter.commons.core.text.Convert;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

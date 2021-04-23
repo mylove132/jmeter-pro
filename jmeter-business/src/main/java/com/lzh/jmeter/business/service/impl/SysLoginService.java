@@ -49,9 +49,6 @@ public class SysLoginService implements ISysLoginService {
         {
             throw new BaseBusinessException(20004, "对不起，您的账号：" + username + " 已停用");
         }
-        log.info("登录的明码：{}", password);
-        log.info("加密明码：{}", SecurityUtils.encryptPassword(password));
-        log.info("数据库的密码：{}", user.getPassword());
         if (!SecurityUtils.matchesPassword(password, user.getPassword()))
         {
             throw new BaseBusinessException(20005, "用户不存在/密码错误");
