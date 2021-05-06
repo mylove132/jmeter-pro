@@ -39,3 +39,6 @@ dubbo:
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+config:
+  excludePath: /api/login,/api/register,/api/ui-script/list
