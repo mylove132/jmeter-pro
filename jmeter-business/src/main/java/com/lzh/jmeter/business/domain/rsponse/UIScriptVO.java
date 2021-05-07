@@ -1,4 +1,4 @@
-package com.lzh.jmeter.business.domain.vo;
+package com.lzh.jmeter.business.domain.rsponse;
 
 import lombok.Data;
 

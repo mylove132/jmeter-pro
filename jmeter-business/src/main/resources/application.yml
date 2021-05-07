@@ -41,4 +41,5 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 config:
-  excludePath: /api/login,/api/register,/api/ui-script/list
+  excludePath: /api/login,/api/register,/api/ui-script/*
+  extdirs: D:/java/repository/org/seleniumhq/selenium/selenium-java/3.141.59/selenium-java-3.141.59.jar

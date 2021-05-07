@@ -1,7 +1,7 @@
 package com.lzh.jmeter.business.controller;
 
-import com.lzh.jmeter.business.domain.vo.LoginVO;
-import com.lzh.jmeter.business.domain.vo.TokenVO;
+import com.lzh.jmeter.business.domain.request.LoginVO;
+import com.lzh.jmeter.business.domain.rsponse.TokenVO;
 import com.lzh.jmeter.business.service.ISysLoginService;
 import com.lzh.jmeter.commons.core.domain.ResponseData;
 import com.lzh.jmeter.commons.core.domain.ResponseUtil;

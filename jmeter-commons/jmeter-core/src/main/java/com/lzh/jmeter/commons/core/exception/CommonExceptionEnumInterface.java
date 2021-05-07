@@ -12,6 +12,7 @@ public enum  CommonExceptionEnumInterface implements ExceptionEnumInterface
 {
     SUCCESS(Constants.SUCCESS, "OK"),
     FAIL(Constants.FAIL,"error"),
+    PARAM_NOT_NULL(10000, "参数不能为空"),
     UTIL_SQL_VALIDATE_EXCEPTION(10001, "参数不符合规范，不能进行查询"),
     NOT_AUTHORITIES(50000, "NOT AUTH"),
     AUTHORITIES_FAIL(50001, "AUTH FAIL"),
