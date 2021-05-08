@@ -38,11 +38,26 @@ public class RabbitConfig {
         return new Queue(RabbitmqConstants.RUN_JMETER_SCRIPT_SUCCESS_QUEUE, true);
     }
 
+    /**
+     * 运行ui脚本完成事件
+     * @return
+     */
+    @Bean
+    public Queue runUIScriptFinishQueue() {
+        return new Queue(RabbitmqConstants.RUN_JMETER_SCRIPT_SUCCESS_QUEUE, true);
+    }
+
 
     // jmeter交换机名称
     @Bean
     DirectExchange jmeterDirectExchange() {
         return new DirectExchange(RabbitmqConstants.JMETER_EXCHANGE, true, false);
+    }
+
+    // ui交换机名称
+    @Bean
+    DirectExchange uiDirectExchange() {
+        return new DirectExchange(RabbitmqConstants.UI_EXCHANGE, true, false);
     }
 
     //绑定jmeter日志路由
@@ -55,6 +70,12 @@ public class RabbitConfig {
     @Bean
     Binding bindingRunJmeterScriptSuccessDirect() {
         return BindingBuilder.bind(runJmeterScriptSuccessQueue()).to(jmeterDirectExchange()).with(RabbitmqConstants.RK_JMETER);
+    }
+
+    //绑定ui运行完成路由
+    @Bean
+    Binding bindingRunUIScriptSuccessDirect() {
+        return BindingBuilder.bind(runUIScriptFinishQueue()).to(uiDirectExchange()).with(RabbitmqConstants.RK_UI);
     }
 
     //绑定jmeter运行失败路由
