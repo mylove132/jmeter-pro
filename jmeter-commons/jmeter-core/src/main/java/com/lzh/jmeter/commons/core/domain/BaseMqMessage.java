@@ -10,6 +10,7 @@ public class BaseMqMessage implements Serializable {
     private String exchange;
     private String contents;
     private String title;
+    private int userId;
 
     public String getRoutingKey() {
         return routingKey;
@@ -43,4 +44,11 @@ public class BaseMqMessage implements Serializable {
         this.title = title;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 }

@@ -33,7 +33,7 @@ public class RabbitConsumer {
      */
     @RabbitListener(queues = RabbitmqConstants.JMETER_INFO_QUEUE)
     @RabbitHandler
-    public void sendJmeterMessageToWs (Message message, Channel channel) throws IOException {
+    public void sendMessageToAll (Message message, Channel channel) throws IOException {
         try {
             BaseMqMessage baseMqMessage = JSONObject.parseObject(new String(message.getBody()), BaseMqMessage.class);
             LocalSession.sendMessageToAll(baseMqMessage.getContents());
@@ -46,17 +46,17 @@ public class RabbitConsumer {
 
 
     /**
-     * 发送jmeter脚本执行完成后的消息
+     * 发送UI脚本执行完成的消息事件
      * @param message
      * @param channel
      * @throws IOException
      */
-    @RabbitListener(queues = RabbitmqConstants.RUN_JMETER_SCRIPT_SUCCESS_QUEUE)
+    @RabbitListener(queues = RabbitmqConstants.RUN_UI_SCRIPT_FINISH_QUEUE)
     @RabbitHandler
-    public void sendRunSuccessMessageToWs (Message message, Channel channel) throws IOException {
+    public void sendUIScriptFinishMessageToWS (Message message, Channel channel) throws IOException {
         try {
             BaseMqMessage baseMqMessage = JSONObject.parseObject(new String(message.getBody()), BaseMqMessage.class);
-            Session session = LocalSession.getLocalSession(String.valueOf(ServletUtils.getRequest().getHeader(CacheConstants.AUTHORIZATION_USER_ID)));
+            Session session = LocalSession.getLocalSession(String.valueOf(baseMqMessage.getUserId()));
             LocalSession.sendMessage(session, baseMqMessage);
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);//确认消息成功消费
         }catch (IOException e) {

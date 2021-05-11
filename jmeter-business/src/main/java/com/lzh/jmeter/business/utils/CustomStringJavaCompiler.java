@@ -223,20 +223,36 @@ public class CustomStringJavaCompiler {
     }
 
     public static void main(String[] args) {
-        String code = "package com.lzh.jmeter.business.controller;\n" +
+        String code = "import com.lzh.jmeter.ui.listener.UIListener;\n" +
+                "import org.testng.Assert;\n" +
+                "import org.testng.TestNG;\n" +
+                "import org.testng.annotations.Test;\n" +
                 "\n" +
-                "import org.openqa.selenium.WebDriver;\n" +
-                "import org.openqa.selenium.chrome.ChromeDriver;\n" +
+                "public class LoginTest extends BaseTest {\n" +
                 "\n" +
-                "public class UITest {\n" +
-                "    public static void main(String[] args) {\n" +
-                "        System.setProperty(\"webdriver.chrome.driver\", \"D:\\\\soft\\\\chrome\\\\chromedriver.exe\");\n" +
-                "        WebDriver driver = new ChromeDriver();\n" +
+                "    @Test(testName = \"login\")\n" +
+                "    public void login () {\n" +
+                "        driver.manage().window().maximize();\n" +
                 "        driver.get(\"https://doctor.jd.com\");\n" +
                 "    }\n" +
-                "}\n";
+                "\n" +
+                "    @Test(testName = \"test1\")\n" +
+                "    public void test1() throws InterruptedException {\n" +
+                "        Thread.sleep(10000);\n" +
+                "        Assert.assertTrue(\"aa\".equals(\"bb\"), \"aa\"+\"与\"+\"bb不相等\");\n" +
+                "        System.out.println(\"失败结束\");\n" +
+                "    }\n" +
+                "\n" +
+                "    public static void main(String[] args) {\n" +
+                "        TestNG tng = new TestNG();\n" +
+                "        tng.setVerbose(0);\n" +
+                "        tng.addListener(new UIListener());\n" +
+                "        tng.setTestClasses(new Class[] {LoginTest.class});\n" +
+                "        tng.run();\n" +
+                "    }\n" +
+                "}";
         CustomStringJavaCompiler compiler = new CustomStringJavaCompiler(code);
-        boolean res = compiler.compiler("");
+        boolean res = compiler.compiler("D:\\java\\repository\\com\\lzh\\jmeter\\jmeter-autoUI\\1.0.0\\jmeter-autoUI-1.0.0.jar;\u202AD:\\java\\repository\\org\\seleniumhq\\selenium\\selenium-java\\3.141.59\\selenium-java-3.141.59.jar;D:\\java\\repository\\org\\testng\\testng\\7.3.0\\testng-7.3.0.jar;");
         if (res) {
             System.out.println("编译成功");
             System.out.println("compilerTakeTime：" + compiler.getCompilerTakeTime());

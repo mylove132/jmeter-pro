@@ -13,6 +13,7 @@
         <module>jmeter-system</module>
         <module>jmeter-job</module>
         <module>jmeter-business</module>
+        <module>jmeter-autoUI</module>
     </modules>
 
     <properties>
@@ -182,6 +183,13 @@
             <dependency>
                 <groupId>com.lzh.jmeter</groupId>
                 <artifactId>jmeter-task</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+
+            <!--ui服务组件-->
+            <dependency>
+                <groupId>com.lzh.jmeter</groupId>
+                <artifactId>jmeter-autoUI</artifactId>
                 <version>1.0.0</version>
             </dependency>
 
