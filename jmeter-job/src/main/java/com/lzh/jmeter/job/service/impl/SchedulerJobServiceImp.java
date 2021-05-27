@@ -1,7 +1,8 @@
 package com.lzh.jmeter.job.service.impl;
 
-import com.lzh.jmeter.commons.core.exception.job.TaskException;
+import com.lzh.jmeter.commons.core.exception.TaskException;
 import com.lzh.jmeter.job.domain.SchedulerJob;
+import com.lzh.jmeter.job.exception.JobExceptionCode;
 import com.lzh.jmeter.job.service.ISchedulerJobService;
 import org.quartz.*;
 import org.quartz.impl.JobDetailImpl;
@@ -42,7 +43,7 @@ public class SchedulerJobServiceImp implements ISchedulerJobService {
             scheduler.scheduleJob(jobDetail, trigger);
         } catch (Exception e) {
             log.error("创建任务失败", e);
-            throw new TaskException("创建定时任务失败", TaskException.Code.ADD_TASK_FAIL.getCode());
+            throw new TaskException(JobExceptionCode.ADD_TASK_FAIL);
         }
     }
 
@@ -52,7 +53,7 @@ public class SchedulerJobServiceImp implements ISchedulerJobService {
             scheduler.pauseJob(JobKey.jobKey(jobName, groupName));
         } catch (SchedulerException e) {
             log.error("暂停任务失败", e);
-            throw new TaskException("暂停任务失败", TaskException.Code.PAUSE_TASK_FAIL.getCode());
+            throw new TaskException(JobExceptionCode.PAUSE_TASK_FAIL);
         }
     }
 
@@ -62,7 +63,7 @@ public class SchedulerJobServiceImp implements ISchedulerJobService {
             scheduler.resumeJob(JobKey.jobKey(jobName, groupName));
         } catch (SchedulerException e) {
             log.error("恢复任务失败", e);
-            throw new TaskException("恢复任务失败", TaskException.Code.RESUME_TASK_FAIL.getCode());
+            throw new TaskException(JobExceptionCode.RESUME_TASK_FAIL);
         }
     }
 
@@ -72,7 +73,7 @@ public class SchedulerJobServiceImp implements ISchedulerJobService {
             scheduler.triggerJob(JobKey.jobKey(jobName, groupName));
         } catch (SchedulerException e) {
             log.error("立即运行一次定时任务失败", e);
-            throw new TaskException("恢复任务失败", TaskException.Code.RUN_TASK_FAIL.getCode());
+            throw new TaskException(JobExceptionCode.RESUME_TASK_FAIL);
         }
     }
 
@@ -95,7 +96,7 @@ public class SchedulerJobServiceImp implements ISchedulerJobService {
             scheduler.rescheduleJob(triggerKey, trigger);
         } catch (Exception e) {
             log.error("更新任务失败", e);
-            throw new TaskException("更新任务失败", TaskException.Code.UPDATE_TASK_FAIL.getCode());
+            throw new TaskException(JobExceptionCode.UPDATE_TASK_FAIL);
         }
     }
 
@@ -108,7 +109,7 @@ public class SchedulerJobServiceImp implements ISchedulerJobService {
             scheduler.deleteJob(JobKey.jobKey(jobName, groupName));
         } catch (Exception e) {
             log.error("删除任务失败", e);
-            throw new TaskException("删除任务失败", TaskException.Code.DELETE_TASK_FAIL.getCode());
+            throw new TaskException(JobExceptionCode.DELETE_TASK_FAIL);
         }
     }
 
@@ -118,7 +119,7 @@ public class SchedulerJobServiceImp implements ISchedulerJobService {
             scheduler.start();
         } catch (Exception e) {
             log.error("开启所有的任务失败", e);
-            throw new TaskException("开启所有的任务失败", TaskException.Code.START_TASK_FAIL.getCode());
+            throw new TaskException(JobExceptionCode.START_TASK_FAIL);
         }
     }
 
@@ -128,7 +129,7 @@ public class SchedulerJobServiceImp implements ISchedulerJobService {
             scheduler.pauseAll();
         } catch (Exception e) {
             log.error("暂停所有任务失败", e);
-            throw new TaskException("暂停所有任务失败", TaskException.Code.PAUSE_ALL_TASK_FAIL.getCode());
+            throw new TaskException(JobExceptionCode.PAUSE_ALL_TASK_FAIL);
         }
     }
 
@@ -138,7 +139,7 @@ public class SchedulerJobServiceImp implements ISchedulerJobService {
             scheduler.resumeAll();
         } catch (Exception e) {
             log.error("恢复所有任务失败", e);
-            throw new TaskException("恢复所有任务失败", TaskException.Code.RESUME_ALL_TASK_FAIL.getCode());
+            throw new TaskException(JobExceptionCode.RESUME_ALL_TASK_FAIL);
         }
     }
 
@@ -153,7 +154,7 @@ public class SchedulerJobServiceImp implements ISchedulerJobService {
             }
         } catch (Exception e) {
             log.error("关闭所有的任务失败", e);
-            throw new TaskException("关闭所有的任务失败", TaskException.Code.SHUTDOWN_ALL_TASK_FAIL.getCode());
+            throw new TaskException(JobExceptionCode.SHUTDOWN_ALL_TASK_FAIL);
         }
     }
 
@@ -186,7 +187,7 @@ public class SchedulerJobServiceImp implements ISchedulerJobService {
             return quartzJobsVOList;
         }catch (Exception e){
             log.error("获取所有定时任务列表失败", e);
-            throw new TaskException("获取所有定时任务列表失败", TaskException.Code.GET_ALL_SCHEDULER_FAIL.getCode());
+            throw new TaskException(JobExceptionCode.GET_ALL_SCHEDULER_FAIL);
         }
     }
 }

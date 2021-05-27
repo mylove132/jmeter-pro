@@ -1,6 +1,6 @@
 package com.lzh.jmeter.job.service;
 
-import com.lzh.jmeter.commons.core.exception.job.TaskException;
+import com.lzh.jmeter.commons.core.exception.TaskException;
 import com.lzh.jmeter.job.domain.SchedulerJob;
 
 import java.util.List;

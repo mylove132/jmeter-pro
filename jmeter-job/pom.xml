@@ -12,14 +12,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.lzh.jmeter</groupId>
-            <artifactId>jmeter-core</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.lzh.jmeter</groupId>
             <artifactId>jmeter-log</artifactId>
         </dependency>

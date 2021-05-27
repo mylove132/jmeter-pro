@@ -13,7 +13,6 @@
         <module>jmeter-system</module>
         <module>jmeter-job</module>
         <module>jmeter-business</module>
-        <module>jmeter-autoUI</module>
     </modules>
 
     <properties>

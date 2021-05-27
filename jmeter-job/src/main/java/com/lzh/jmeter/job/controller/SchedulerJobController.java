@@ -1,7 +1,7 @@
 package com.lzh.jmeter.job.controller;
-
-import com.lzh.jmeter.commons.core.domain.R;
-import com.lzh.jmeter.commons.core.exception.job.TaskException;
+import com.lzh.jmeter.commons.core.domain.ResponseData;
+import com.lzh.jmeter.commons.core.domain.ResponseUtil;
+import com.lzh.jmeter.commons.core.exception.TaskException;
 import com.lzh.jmeter.commons.core.web.controller.BaseController;
 import com.lzh.jmeter.commons.log.annotation.Log;
 import com.lzh.jmeter.commons.log.enums.BusinessType;
@@ -25,17 +25,17 @@ public class SchedulerJobController extends BaseController {
 
     @Log(title = "添加定时任务", businessType = BusinessType.INSERT)
     @PostMapping("/job")
-    public R<Boolean> addSchedulerJobController (SchedulerJob schedulerJob) throws TaskException {
+    public ResponseData<Boolean> addSchedulerJobController (SchedulerJob schedulerJob) throws TaskException {
         schedulerJobService.addJob(schedulerJob);
-        return R.ok(true);
+        return new ResponseUtil().success(true);
     }
 
     @Log(title = "获取定时任务列表")
     @GetMapping("/job/list")
-    public R<List<SchedulerJob>> getSchedulerJobListController () throws TaskException {
+    public ResponseData<List<SchedulerJob>> getSchedulerJobListController () throws TaskException {
         startPage();
         List<SchedulerJob> schedulerJobs = schedulerJobService.schedulerJobs();
-        return R.ok(schedulerJobs);
+        return  new ResponseUtil().success(schedulerJobs);
     }
 
 }
