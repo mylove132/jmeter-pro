@@ -1,5 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.lzh.jmeter.commons.websocket.config.WebSocketConfig,\
-  com.lzh.jmeter.commons.websocket.service.WebSocketServerEndpoint
-
-  

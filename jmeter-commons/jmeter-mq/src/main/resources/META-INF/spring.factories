@@ -1,6 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.lzh.jmeter.commons.mq.config.RabbitConfig,\
-  com.lzh.jmeter.commons.mq.consumer.RabbitConsumer,\
-  com.lzh.jmeter.commons.mq.service.RabbitProvider
-
-  

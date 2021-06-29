@@ -1,6 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.lzh.jmeter.commons.datasource.config.DataSourceConfig,\
-  com.lzh.jmeter.commons.datasource.config.MyBatisConfig,\
-  com.lzh.jmeter.commons.datasource.aspect.DataSourceAspect
-
-  

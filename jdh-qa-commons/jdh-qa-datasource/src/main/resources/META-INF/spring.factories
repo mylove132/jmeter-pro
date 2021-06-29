@@ -1,0 +1,6 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.lzh.jdh.qa.commons.datasource.config.DataSourceConfig,\
+  com.lzh.jdh.qa.commons.datasource.config.MyBatisConfig,\
+  com.lzh.jdh.qa.commons.datasource.aspect.DataSourceAspect
+
+  

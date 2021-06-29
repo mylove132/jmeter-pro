@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.lzh.jdh.qa.security.service.TokenService,\
+  com.lzh.jdh.qa.security.handle.GlobalExceptionHandler,\
+  com.lzh.jdh.qa.security.config.WebApplicationConfig

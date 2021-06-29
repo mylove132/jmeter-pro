@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.lzh.jdh.qa.commons.task.factory.QuartzJobFactory,\
+  com.lzh.jdh.qa.commons.task.config.QuartzConfig
+
+  

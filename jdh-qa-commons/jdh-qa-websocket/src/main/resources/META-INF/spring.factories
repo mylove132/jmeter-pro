@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.lzh.jdh.qa.commons.websocket.config.WebSocketConfig,\
+  com.lzh.jdh.qa.commons.websocket.service.WebSocketServerEndpoint
+
+  
